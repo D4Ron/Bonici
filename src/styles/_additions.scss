@@ -1,0 +1,367 @@
+// Styles for things the old site didn't have, written in the same visual language
+// (brand red #C3102F, Playfair Display headings, DM Sans body, 16px radii).
+
+$red: #C3102F;
+$red-dark: #A00D27;
+
+// ---- Navbar: cart badge, account link -------------------------------------
+.s-navbar {
+  .btn-cart {
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .cart-count {
+    position: absolute;
+    top: 0;
+    right: -2px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border-radius: 9px;
+    background: $red;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 18px;
+    text-align: center;
+  }
+  .nav-link {
+    text-decoration: none;
+    color: #444;
+    font-size: 0.9rem;
+    font-weight: 500;
+    &:hover { color: $red; }
+  }
+  .mobile-cart {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+}
+
+// ---- Cart drawer: dish thumbnail ------------------------------------------
+.s-drawer {
+  .item-img {
+    width: 52px;
+    height: 52px;
+    border-radius: 10px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .restaurant-line {
+    color: #888;
+    font-size: 0.8rem;
+    margin: -4px 0 12px;
+  }
+  .drawer-header button { color: #bbb; }
+}
+
+// ---- Home: hero stats / Google rating -------------------------------------
+.s-testimonials {
+  .google-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: white;
+    color: #1a1a1a;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 100px;
+  }
+  .rating-summary {
+    color: white;
+    margin-top: 12px;
+    font-size: 0.95rem;
+    strong { color: $red; font-size: 1.1rem; }
+  }
+  .btn-outline {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    padding: 10px 22px;
+    border-radius: 100px;
+    font-weight: 600;
+    transition: all 0.2s;
+    &:hover { border-color: $red; background: $red; }
+  }
+  .text-center { text-align: center; }
+}
+
+// ---- Shared form bits -------------------------------------------------------
+.alert-error {
+  background: #fdecee;
+  color: $red-dark;
+  border: 1px solid #f7c6cf;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+  ul { margin: 0; padding-left: 18px; }
+}
+.alert-success {
+  background: #eaf7f0;
+  color: #1e6b45;
+  border: 1px solid #bfe5cf;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+
+// ---- Checkout --------------------------------------------------------------
+.s-cart {
+  .cart-content {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 24px;
+    align-items: start;
+    @media (max-width: 960px) { grid-template-columns: 1fr; }
+  }
+  .cart-summary { margin-top: 0; position: sticky; top: 88px; }
+  .restaurant-banner {
+    background: white;
+    border-radius: 16px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    strong { color: $red; }
+    a { color: #666; font-size: 0.85rem; }
+  }
+  .item-info { flex: 1; width: auto; }
+  .item-details .promo { color: $red; font-size: 0.8rem; font-weight: 600; }
+  .item-details .old { text-decoration: line-through; color: #aaa; font-size: 0.8rem; margin-left: 6px; }
+  .field { margin: 14px 0; label { display: block; margin-bottom: 6px; font-weight: 500; } }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; @media (max-width: 520px) { grid-template-columns: 1fr; } }
+  .delivery-option.disabled { opacity: 0.45; pointer-events: none; }
+  .delivery-option input:checked + span { color: $red; font-weight: 600; }
+  .payment-note {
+    background: #f8f8f6;
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-size: 0.85rem;
+    color: #555;
+    margin: 16px 0;
+  }
+  .account-hint { font-size: 0.85rem; color: #666; margin-top: 12px; text-align: center; a { color: $red; } }
+  @media (max-width: 700px) {
+    .cart-item { flex-wrap: wrap; }
+    .item-price { display: none; }
+    .item-quantity, .item-total { width: auto; }
+  }
+}
+
+// ---- Tracking ----------------------------------------------------------------
+.s-suivi {
+  .lookup-error { color: white; margin-top: 12px; font-weight: 600; }
+  .recent-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 16px; }
+  .order-card { text-decoration: none; color: inherit; display: block; }
+  .badge-confirmed, .badge-preparing { background: #e3f2fd; color: #1565c0; }
+  .badge-out_for_delivery { background: #e8f5e9; color: #2e7d32; }
+  .badge-completed { background: #ebf5fb; color: #1a5276; }
+  .badge-rejected { background: #fadbd8; color: #922b21; }
+  .live-note { font-size: 0.8rem; color: #888; text-align: right; margin-top: -8px; }
+  .items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 12px;
+    td { padding: 6px 0; border-bottom: 1px solid #f0f0f0; }
+    td:last-child { text-align: right; white-space: nowrap; }
+  }
+  .totals p { display: flex; justify-content: space-between; margin: 4px 0; }
+  .contact-branch { margin-top: 12px; font-size: 0.9rem; a { color: $red; font-weight: 600; } }
+  .stopped { background: #fadbd8; color: #922b21; border-radius: 12px; padding: 12px 16px; margin: 16px 0; font-weight: 600; }
+  .order-search input { min-width: 0; }
+  @media (max-width: 600px) { .order-search { flex-direction: column; } }
+}
+
+// ---- Menus: restaurant switcher, daily special in list view, modal --------
+.s-menus {
+  .restaurant-chips .chip { text-align: left; }
+  .variant-picker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 10px 0 4px;
+    button {
+      border: 1.5px solid #e5e5e5;
+      background: white;
+      color: #444;
+      border-radius: 100px;
+      padding: 4px 11px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      &:hover { border-color: $red; color: $red; }
+      &.active { background: $red; border-color: $red; color: white; transform: scale(1.04); }
+    }
+  }
+  .toolbar .restaurant-note { color: #888; font-size: 0.85rem; }
+}
+.confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 1400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: pageEnter 0.25s ease both;
+}
+.confirm-box {
+  background: white;
+  border-radius: 20px;
+  padding: 28px;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 10px; }
+  p { color: #555; line-height: 1.5; margin-bottom: 20px; }
+  .actions { display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap; }
+  button { padding: 10px 18px; border-radius: 10px; font-weight: 600; cursor: pointer; border: 1.5px solid #ddd; background: white; }
+  .primary { background: $red; border-color: $red; color: white; }
+}
+
+// ---- Restaurants: details --------------------------------------------------
+.s-restaurants {
+  .btn-locate {
+    margin-top: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    color: $red;
+    border: none;
+    border-radius: 100px;
+    padding: 10px 20px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease;
+    &:hover:not(:disabled) { transform: translateY(-2px); }
+    &:disabled { opacity: 0.8; cursor: wait; }
+  }
+  .locate-error { color: white; margin-top: 10px; font-weight: 600; }
+  .restaurant-card { position: relative; }
+  .restaurant-card.nearest { outline: 2px solid $red; outline-offset: 2px; }
+  .nearest-badge {
+    position: absolute;
+    top: -10px;
+    right: 16px;
+    background: $red;
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 100px;
+    animation: popIn 0.35s ease;
+  }
+  .distance { color: $red; }
+  .restaurant-card .meta { color: #666; font-size: 0.9rem; margin: 4px 0; }
+  .restaurant-card .rating { color: #1a1a1a; font-weight: 600; font-size: 0.9rem; margin: 6px 0; span { color: $red; } }
+}
+
+// ---- Reviews page --------------------------------------------------------------
+.reviews-page {
+  min-height: 100vh;
+  background: #111;
+  padding: 120px 24px 80px;
+  color: white;
+  .reviews-hero {
+    text-align: center;
+    margin-bottom: 48px;
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; em { color: $red; } }
+    p { color: rgba(255, 255, 255, 0.75); margin-top: 8px; font-size: 1rem; }
+  }
+  .branch-ratings {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 40px;
+    a {
+      color: white;
+      text-decoration: none;
+      border: 1px solid #2a2a2a;
+      background: #1a1a1a;
+      border-radius: 100px;
+      padding: 8px 18px;
+      font-size: 0.9rem;
+      &:hover { border-color: $red; }
+      strong { color: $red; }
+    }
+  }
+  .reviews-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+}
+.review-tile {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  .stars { color: $red; letter-spacing: 2px; font-size: 1.1rem; .off { color: #444; } }
+  blockquote { color: rgba(255, 255, 255, 0.9); line-height: 1.6; font-style: italic; flex: 1; white-space: pre-line; }
+  .who { color: white; font-weight: 700; }
+  .where { color: rgba(255, 255, 255, 0.6); font-size: 0.8rem; }
+}
+
+// ---- Simple content pages (à propos, contact, CGU…) and account --------------
+.content-page {
+  min-height: 70vh;
+  background: #f8f8f6;
+  padding: 120px 24px 80px;
+  .inner { max-width: 860px; margin: 0 auto; }
+  h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 12px; em { color: $red; } }
+  .lead { color: #666; font-size: 1.05rem; margin-bottom: 32px; line-height: 1.6; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin: 28px 0 10px; }
+  p, li { line-height: 1.7; color: #333; }
+  ul { padding-left: 20px; }
+  .card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    margin-bottom: 16px;
+  }
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+  .card h3 { font-size: 1.1rem; margin-bottom: 6px; }
+  .card a { color: $red; font-weight: 600; text-decoration: none; }
+  .pending-text { border-left: 4px solid $red; background: #fff5f6; padding: 16px 20px; border-radius: 0 12px 12px 0; }
+  .btn-primary {
+    display: inline-block;
+    background: $red;
+    color: white;
+    text-decoration: none;
+    padding: 10px 22px;
+    border-radius: 10px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    &:hover { background: $red-dark; }
+  }
+  .btn-link { background: none; border: none; color: $red; font-weight: 600; cursor: pointer; padding: 0; }
+  .orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    th, td { padding: 12px 8px; border-bottom: 1px solid #eee; text-align: left; }
+    a { color: $red; font-weight: 600; text-decoration: none; }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "source": "Google Maps",
+  "capturedOn": "2026-10-02",
+  "note": "Dates are relative to capturedOn, as Google displays them. Original language kept (Google's translations not used). Reviews with empty text are rating-only.",
+  "branches": [
+    {
+      "branch": "Kanyikopé",
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJq4NPkEDlIxARJ40DP1U1wUc",
+      "rating": 4.3,
+      "reviewCount": 25,
+      "reviews": [
+        { "author": "Octave Ilnaquis", "stars": 4, "date": "il y a un an", "text": "Je passe souvent par là pour prendre mon sandwich.\nLe service est acceptable" },
+        { "author": "Michael Batté", "stars": 4, "date": "il y a 2 ans", "text": "Accueil vraiment sympathique et nourriture de type burger pizza. Très bien rapport qualité prix" },
+        { "author": "LaShanda", "stars": 4, "date": "il y a 3 ans", "text": "I enjoyed my food I had the NY burger. My husband had a salad he didn't care for too much." },
+        { "author": "Rub A.", "stars": 3, "date": "il y a un an", "text": "Le personnel était très accueillant le jour de mon passage." },
+        { "author": "Kangni Adodo Gildas LANTCHIBLE", "stars": 5, "date": "il y a 3 ans", "text": "Je tiens à tirer mon chapeau aux cuisiniers. L'accueil, impeccable" },
+        { "author": "Jean-Claude Adzalla", "stars": 5, "date": "il y a 2 ans", "text": "Best pasta in the country.\nAsk for the Poulet Champignon Curry" },
+        { "author": "Emmanuel Avowlanou", "stars": 5, "date": "il y a 2 ans", "text": "On n'y mange bien ooo" },
+        { "author": "Koku Agbewornu", "stars": 4, "date": "il y a 3 ans", "text": "A nice eatery with splendid staff" },
+        { "author": "Adeyola", "stars": 5, "date": "il y a 2 ans", "text": "Calm and quiet restaurant in Lomé, Togo" },
+        { "author": "kossi adjrakou", "stars": 5, "date": "il y a un an", "text": "Cool" },
+        { "author": "Marco Kotch", "stars": 5, "date": "il y a 2 ans", "text": "Super, une référence" },
+        { "author": "Jean Marie Bignandi", "stars": 5, "date": "il y a 2 ans", "text": "Fantastique" },
+        { "author": "Enyonam d'Almeida", "stars": 4, "date": "il y a 2 ans", "text": "Bonici Ramatou" },
+        { "author": "Eric Assiongbon", "stars": 4, "date": "il y a 7 mois", "text": "" },
+        { "author": "Samtou Fibi", "stars": 5, "date": "il y a un an", "text": "" },
+        { "author": "Madjé Zonvide", "stars": 4, "date": "il y a un an", "text": "" },
+        { "author": "Koami. AGODE", "stars": 4, "date": "il y a 2 ans", "text": "" },
+        { "author": "gustavo tafu", "stars": 4, "date": "il y a 2 ans", "text": "" },
+        { "author": "Dodji Y. AVOWLANOU", "stars": 4, "date": "il y a 2 ans", "text": "" },
+        { "author": "Beauty ORLAYA", "stars": 4, "date": "il y a 3 ans", "text": "" },
+        { "author": "Madjé Michelle Zonvide", "stars": 3, "date": "il y a 3 ans", "text": "" },
+        { "author": "God Light", "stars": 5, "date": "il y a un mois", "text": "" },
+        { "author": "Sopodiva Ghana", "stars": 4, "date": "il y a un mois", "text": "" },
+        { "author": "Anndd LOKKWANNI", "stars": 5, "date": "il y a un an", "text": "" },
+        { "author": "Nathalia Ilona ADJEDA", "stars": 4, "date": "il y a 2 ans", "text": "" }
+      ]
+    },
+    {
+      "branch": "Aného",
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJVfwNQkiTIxARdhEiqeK0tMw",
+      "rating": 4.3,
+      "reviewCount": 29,
+      "reviews": [
+        { "author": "Maekel", "stars": 5, "date": "il y a un an", "text": "Très bons repas... Qualité-prix au top!\nBon endroit, Bonne climatisation... Propreté impeccable. Merci beaucoup.\nJe recommande !" },
+        { "author": "zoe Princesse", "stars": 5, "date": "il y a 6 mois", "text": "Le meilleur charwama c'est chez bonici\n👌🏽" },
+        { "author": "Marceline Palou", "stars": 4, "date": "il y a 3 ans", "text": "Malheureusement j'étais allée quand il y avait vraiment du monde et beaucoup d'enfants du coup c'était très bruyant. Par contre les serveurs, ce sont des 10. Super réactifs et à l'écoute. Aucun ne rechignait ou avait la mine renfrognée. Très professionnels." },
+        { "author": "Etienne Kodzo Amegan", "stars": 3, "date": "il y a 2 ans", "text": "Endroit Calme pour se croiser et discuter. Pizza moins bon. Service pas mal" },
+        { "author": "Bright Teko Kuevidjin", "stars": 4, "date": "il y a 3 ans", "text": "J'ai aimé le cadre, l'accueil et la bouffe. Bonne pizza, bons shawarma et burger. Riz et pintade, je conseille." },
+        { "author": "kokou soke EBOE", "stars": 4, "date": "il y a 2 ans", "text": "Un bon restaurant avec un personnel très accueillant." },
+        { "author": "Boris Gnininvi", "stars": 5, "date": "il y a 3 ans", "text": "Accueil chaleureux et une ambiance conviviale" },
+        { "author": "Maxime DJOKOUI", "stars": 4, "date": "il y a 3 ans", "text": "Y ai fait la découverte du Togoburger et vous invite à en faire de même." },
+        { "author": "Folly Ezou", "stars": 5, "date": "il y a un an", "text": "Un lieu très cool" },
+        { "author": "Immaculé SABI-BEGNIBE (Imma)", "stars": 3, "date": "il y a 2 ans", "text": "Tout simplement excellent et rapide" },
+        { "author": "Geraude AMEDEGNATO", "stars": 5, "date": "il y a 4 ans", "text": "Bonne accueil et bonne cuisine" },
+        { "author": "malik batoulime", "stars": 5, "date": "il y a 3 ans", "text": "Chic place pour couple" },
+        { "author": "August DAKLA", "stars": 4, "date": "il y a 2 ans", "text": "Bien cool" },
+        { "author": "Nicolas LIGLIH", "stars": 5, "date": "il y a 4 ans", "text": "Je donne 10/10" },
+        { "author": "Mickael GABA", "stars": 5, "date": "il y a 3 ans", "text": "Trop cool" },
+        { "author": "ANANI SYLVANUS ALAIN MORTANT", "stars": 4, "date": "il y a 2 ans", "text": "Assez bien" },
+        { "author": "Prince touring", "stars": 5, "date": "il y a 2 ans", "text": "Nice" },
+        { "author": "Robert Koto", "stars": 5, "date": "il y a 5 mois", "text": "" },
+        { "author": "Pierre Tevi-Benissan", "stars": 4, "date": "il y a 2 ans", "text": "" },
+        { "author": "Robert Klawoe", "stars": 5, "date": "il y a 2 ans", "text": "" },
+        { "author": "Emmanuel MEGBENU", "stars": 3, "date": "il y a 3 ans", "text": "" },
+        { "author": "Epiphane GOKA", "stars": 4, "date": "il y a 3 ans", "text": "" },
+        { "author": "Samuel Oduro", "stars": 4, "date": "il y a 9 mois", "text": "" },
+        { "author": "Donatien Kudonu", "stars": 5, "date": "il y a un an", "text": "" },
+        { "author": "Koffi Fayossey Gnuitoh", "stars": 5, "date": "il y a un an", "text": "" },
+        { "author": "Majoie Messan", "stars": 1, "date": "il y a 2 ans", "text": "" },
+        { "author": "Emmanuel Ahlin", "stars": 5, "date": "il y a 3 ans", "text": "" },
+        { "author": "Emmanuel Katako", "stars": 4, "date": "il y a 3 ans", "text": "" },
+        { "author": "Eric Akue", "stars": 5, "date": "il y a 4 ans", "text": "" }
+      ]
+    },
+    {
+      "branch": "Agoè 2 Lions",
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJzwcTNwBZIRARt_-RNrHJ1AA",
+      "rating": 3.8,
+      "reviewCount": 5,
+      "reviews": [
+        { "author": "Jessica Fagbegnon", "stars": 1, "date": "il y a 5 mois", "text": "J’ai reçu ma glace dans un sachet comme si on me vendait du gari. Ce n’est pas sérieux surtout venant de Bonicci en plus ! Si ce n’est pas possible pour vous de mettre la vrai glace dans le menu soit enlever et diminuer le prix soit envoyer de vrai glace et augmenter le prix. QUELLE DÉCEPTION !" },
+        { "author": "Santa Arista", "stars": 5, "date": "il y a 2 mois", "text": "Très bon accueil, ambiance chaleureuse 🤗" },
+        { "author": "Koffi Edouard ABONY", "stars": 5, "date": "il y a une semaine", "text": "" },
+        { "author": "Tièdimpo SALIFOU", "stars": 5, "date": "il y a un an", "text": "" },
+        { "author": "Bella NADJE", "stars": 3, "date": "il y a 2 ans", "text": "" }
+      ]
+    }
+  ]
+}

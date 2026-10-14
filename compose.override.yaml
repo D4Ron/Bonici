@@ -1,0 +1,23 @@
+# Development overrides, merged automatically by `docker compose up`.
+# Hot reload from your working copy.
+
+services:
+  db:
+    ports:
+      - "5433:5432"
+
+  migrate:
+    command: sh -c "npx prisma migrate deploy && npm run db:seed"
+
+  app:
+    build:
+      target: dev
+    environment:
+      NODE_ENV: development
+      UPLOAD_DIR: /app/uploads
+      WATCHPACK_POLLING: "true"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+      - uploads:/app/uploads

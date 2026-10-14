@@ -1,0 +1,63 @@
+// Global base, ported from the old src/styles.scss (the Angular Material theme is gone;
+// its body font size/line-height are kept so text renders at the same size).
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  font: 400 0.875rem/1.25rem 'DM Sans', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #1a1a1a;
+  background: white;
+  overflow-x: hidden;
+  min-height: 100%;
+}
+
+a { color: inherit; transition: color 0.2s; }
+.icon { display: inline-block; vertical-align: -0.15em; flex-shrink: 0; }
+img { max-width: 100%; display: block; }
+button, input, select, textarea { font-family: inherit; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f0f0f0; }
+::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #C3102F; }
+::selection { background: rgba(195, 16, 47, 0.18); color: #A00D27; }
+
+:root {
+  --primary: #C3102F;
+  --primary-dark: #A00D27;
+  --dark: #1a1a1a;
+  --muted: #888;
+  --border: #e5e5e5;
+  --bg: #f8f8f6;
+}
+
+// Wrapper for each ported component: invisible to layout, only scopes its styles.
+[class^='s-'], [class*=' s-'] { display: contents; }
+
+.section-header {
+  margin-bottom: 30px;
+  h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: #1a1a1a; margin: 0 0 4px 0; }
+  p { color: #888; font-size: 1.1rem; margin: 0; }
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #888;
+  .empty-icon { font-size: 3rem; margin-bottom: 16px; }
+  h3 { font-size: 1.2rem; color: #1a1a1a; margin: 0 0 8px; }
+  p { margin: 0; }
+}
+

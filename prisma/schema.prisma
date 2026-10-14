@@ -1,0 +1,314 @@
+generator client {
+  provider      = "prisma-client-js"
+  // "native" for running on a dev machine, musl for the Alpine Docker image.
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// All money amounts are whole FCFA (XOF has no minor unit).
+
+enum Role {
+  CUSTOMER
+  MANAGER // runs one restaurant's orders and menu availability
+  ADMIN
+}
+
+model User {
+  id           Int                  @id @default(autoincrement())
+  email        String               @unique
+  name         String
+  phone        String?
+  passwordHash String
+  role         Role                 @default(CUSTOMER)
+  restaurantId Int? // the restaurant a MANAGER runs
+  restaurant   Restaurant?          @relation(fields: [restaurantId], references: [id], onDelete: SetNull)
+  sessions     Session[]
+  resetTokens  PasswordResetToken[]
+  orders       Order[]
+  createdAt    DateTime             @default(now())
+}
+
+model Session {
+  id        String   @id // SHA-256 of the cookie token; the raw token is never stored
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+model PasswordResetToken {
+  id        String    @id // SHA-256 of the emailed token
+  userId    Int
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  usedAt    DateTime?
+}
+
+model Restaurant {
+  id              Int         @id @default(autoincrement())
+  slug            String      @unique
+  name            String
+  description     String      @default("")
+  address         String
+  city            String      @default("Lomé")
+  phone           String      @default("")
+  email           String      @default("")
+  openingHours    String      @default("")
+  googleMapsUrl   String      @default("") // directions to the branch
+  googleReviewUrl String      @default("") // the branch's Google listing, where customers leave reviews
+  latitude        Float?
+  longitude       Float?
+  coverImage      String?
+  deliveryEnabled Boolean     @default(true)
+  takeawayEnabled Boolean     @default(true)
+  deliveryFee     Int         @default(500)
+  minimumOrder    Int         @default(0)
+  isActive        Boolean     @default(true)
+  position        Int         @default(0)
+  odooWarehouseId Int? // optional: Odoo warehouse the branch's sales orders are booked on
+  menuItems       MenuItem[]
+  promotions      Promotion[]
+  orders          Order[]
+  managers        User[]
+  reviews         Review[]
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+}
+
+model Category {
+  id       Int     @id @default(autoincrement())
+  slug     String  @unique
+  name     String
+  image    String?
+  position Int     @default(0)
+  isActive Boolean @default(true)
+  dishes   Dish[]
+}
+
+model Dish {
+  id            Int         @id @default(autoincrement())
+  name          String
+  description   String      @default("")
+  basePrice     Int
+  categoryId    Int
+  category      Category    @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  image         String?
+  isActive      Boolean     @default(true)
+  isFeatured    Boolean     @default(false) // shown in "Les plus populaires" until real order data exists
+  odooProductId Int? // product.product id in Odoo
+  variants      DishVariant[]
+  menuItems     MenuItem[]
+  promotions    Promotion[]
+  orderItems    OrderItem[]
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+
+// Sizes or flavours sold at their own price (pizza Moyenne/Grande, Jus frais Orange/Bissap…).
+// When a dish has variants, the customer picks one and its price replaces the dish price.
+model DishVariant {
+  id       Int    @id @default(autoincrement())
+  dishId   Int
+  dish     Dish   @relation(fields: [dishId], references: [id], onDelete: Cascade)
+  label    String
+  price    Int
+  position Int    @default(0)
+
+  @@index([dishId])
+}
+
+// A dish on one restaurant's menu, optionally at a branch-specific price
+// (the override only applies to dishes without variants).
+model MenuItem {
+  id             Int        @id @default(autoincrement())
+  restaurantId   Int
+  restaurant     Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  dishId         Int
+  dish           Dish       @relation(fields: [dishId], references: [id], onDelete: Cascade)
+  price          Int? // null = the dish's base price
+  isAvailable    Boolean    @default(true)
+  isDailySpecial Boolean    @default(false)
+
+  @@unique([restaurantId, dishId])
+}
+
+model Promotion {
+  id              Int         @id @default(autoincrement())
+  title           String
+  restaurantId    Int? // null = every restaurant
+  restaurant      Restaurant? @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  dishes          Dish[]
+  discountPercent Int
+  startsAt        DateTime
+  endsAt          DateTime
+  isActive        Boolean     @default(true)
+  createdAt       DateTime    @default(now())
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  PREPARING
+  READY
+  OUT_FOR_DELIVERY
+  COMPLETED
+  CANCELLED
+  REJECTED
+}
+
+enum FulfillmentMode {
+  DELIVERY
+  TAKEAWAY
+}
+
+enum PaymentMethod {
+  CASH
+}
+
+enum PaymentStatus {
+  UNPAID
+  PAID
+}
+
+enum OdooSyncStatus {
+  DISABLED // integration not configured when the order was placed
+  PENDING
+  SYNCED
+  FAILED
+}
+
+model Order {
+  id             Int             @id @default(autoincrement())
+  token          String          @unique // unguessable; the tracking link is /suivi/<token>
+  restaurantId   Int
+  restaurant     Restaurant      @relation(fields: [restaurantId], references: [id], onDelete: Restrict)
+  userId         Int?
+  user           User?           @relation(fields: [userId], references: [id], onDelete: SetNull)
+  customerName   String
+  customerPhone  String
+  customerEmail  String          @default("")
+  mode           FulfillmentMode
+  address        String          @default("")
+  notes          String          @default("")
+  paymentMethod  PaymentMethod   @default(CASH)
+  paymentStatus  PaymentStatus   @default(UNPAID)
+  status         OrderStatus     @default(PENDING)
+  subtotal       Int
+  discount       Int
+  deliveryFee    Int
+  total          Int
+  items          OrderItem[]
+  events         OrderEvent[]
+  odooSyncStatus OdooSyncStatus  @default(DISABLED)
+  odooOrderId    Int?
+  odooOrderName  String          @default("")
+  odooError      String          @default("")
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  @@index([restaurantId, createdAt])
+  @@index([customerPhone])
+  @@index([odooSyncStatus])
+}
+
+// Name and prices are copied at order time so later menu edits never change past orders.
+model OrderItem {
+  id              Int    @id @default(autoincrement())
+  orderId         Int
+  order           Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  dishId          Int?
+  dish            Dish?  @relation(fields: [dishId], references: [id], onDelete: SetNull)
+  variantId       Int? // no foreign key on purpose: editing a dish's variants must not touch past orders
+  name            String // includes the variant, e.g. "Pizza Bonici (Grande)"
+  basePrice       Int
+  discountPercent Int
+  unitPrice       Int
+  quantity        Int
+  lineTotal       Int
+}
+
+model OrderEvent {
+  id        Int         @id @default(autoincrement())
+  orderId   Int
+  order     Order       @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  status    OrderStatus
+  note      String      @default("")
+  createdAt DateTime    @default(now())
+
+  @@index([orderId])
+}
+
+enum ReviewSource {
+  GOOGLE
+}
+
+model Review {
+  id           Int          @id @default(autoincrement())
+  source       ReviewSource @default(GOOGLE)
+  restaurantId Int?
+  restaurant   Restaurant?  @relation(fields: [restaurantId], references: [id], onDelete: SetNull)
+  author       String
+  rating       Int
+  text         String       @default("")
+  publishedAt  DateTime // approximate: Google only shows "il y a 2 ans"
+  isPublished  Boolean      @default(true)
+  createdAt    DateTime     @default(now())
+
+  @@unique([source, restaurantId, author])
+}
+
+model NewsPost {
+  id          Int      @id @default(autoincrement())
+  title       String
+  body        String
+  image       String?
+  author      String   @default("")
+  isPublished Boolean  @default(true)
+  publishedAt DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+enum TenderStatus {
+  OPEN
+  IN_PROGRESS
+  CLOSED
+}
+
+model Tender {
+  id          Int          @id @default(autoincrement())
+  reference   String       @unique
+  title       String
+  description String
+  location    String
+  deadline    DateTime
+  status      TenderStatus @default(OPEN)
+  document    String?
+  publishedAt DateTime     @default(now())
+}
+
+enum ApplicationStatus {
+  NEW
+  REVIEWING
+  INTERVIEW
+  ACCEPTED
+  REJECTED
+}
+
+model JobApplication {
+  id         Int               @id @default(autoincrement())
+  firstName  String
+  lastName   String
+  email      String
+  phone      String
+  message    String
+  cvFile     String // private upload, served only to admins
+  letterFile String?
+  status     ApplicationStatus @default(NEW)
+  createdAt  DateTime          @default(now())
+}

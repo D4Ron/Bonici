@@ -1,0 +1,221 @@
+// Ported from Old-site/bonici-frontend-1/src/app/pages/bon-plan/appels-offre/appels-offre.scss
+
+
+.s-offres {
+// src/app/pages/bon-plan/appels-offre/appels-offre.component.scss
+
+.appels-offre {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 24px 60px;
+  min-height: 70vh;
+}
+
+.section-header {
+  margin-bottom: 40px;
+}
+
+.section-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: #1a1a1a;
+  margin: 0 0 8px 0;
+}
+
+.section-header h2 span {
+  color: #C3102F;
+}
+
+.section-header p {
+  color: #888;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.filters .filter-btn {
+  padding: 8px 20px;
+  border: 1.5px solid #e5e5e5;
+  border-radius: 20px;
+  background: white;
+  color: #888;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filters .filter-btn:hover {
+  border-color: #C3102F;
+  color: #C3102F;
+}
+
+.filters .filter-btn.active {
+  background: #C3102F;
+  color: white;
+  border-color: #C3102F;
+}
+
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.offer-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border: 1px solid #e5e5e5;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.offer-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+}
+
+.offer-badge {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  align-self: flex-start;
+}
+
+.offer-badge.actif {
+  background: #e6f7e6;
+  color: #2d7d2d;
+}
+
+.offer-badge.en_cours {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.offer-badge.cloture {
+  background: #fee;
+  color: #c62828;
+}
+
+.offer-ref {
+  font-size: 0.75rem;
+  color: #aaa;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.offer-card h3 {
+  font-size: 1.2rem;
+  color: #1a1a1a;
+  margin: 0 0 8px 0;
+  line-height: 1.4;
+}
+
+.offer-description {
+  color: #666;
+  line-height: 1.6;
+  font-size: 0.9rem;
+  flex: 1;
+  margin: 0 0 16px 0;
+}
+
+.offer-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 16px;
+}
+
+.offer-meta span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.offer-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.offer-footer .btn-details {
+  color: #C3102F;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.offer-footer .btn-details:hover {
+  transform: translateX(4px);
+}
+
+.offer-footer .offer-date {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #888;
+}
+
+.empty-state .empty-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.empty-state h3 {
+  font-size: 1.2rem;
+  color: #1a1a1a;
+  margin: 0 0 8px;
+}
+
+.empty-state p {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .appels-offre {
+    padding: 100px 16px 40px;
+  }
+
+  .section-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .offers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filters {
+    gap: 8px;
+  }
+
+  .filters .filter-btn {
+    padding: 6px 14px;
+    font-size: 0.8rem;
+  }
+}
+}

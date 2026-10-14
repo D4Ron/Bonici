@@ -1,0 +1,20 @@
+// Ported from Old-site/bonici-frontend-1/src/app/components/how-it-works/how-it-works.scss
+
+
+.s-how {
+.how-it-works {
+  padding: 80px 0; background: #fff; text-align: center;
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+  .section-header { margin-bottom: 48px;
+    h2 { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4vw,2.5rem); font-weight:800; margin-bottom:8px; }
+    p { color:#666; font-size:1rem; }
+  }
+  .steps { display:flex; justify-content:center; flex-wrap:wrap; gap:40px; }
+  .step { flex:1; min-width:250px; max-width:320px; text-align:center; padding:20px 16px; }
+  .step-icon { margin-bottom:20px; display:flex; justify-content:center; }
+  .step-svg { width:70px; height:70px; color:#C3102F; stroke-width:1.5; transition:transform .2s; &:hover{transform:scale(1.05)} }
+  h3 { font-size:1.3rem; font-weight:700; margin-bottom:12px; }
+  p { color:#555; line-height:1.5; font-size:0.95rem; }
+}
+@media (max-width:768px) { .how-it-works .steps { flex-direction:column; align-items:center; gap:30px; } }
+}

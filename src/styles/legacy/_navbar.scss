@@ -1,0 +1,435 @@
+// Ported from Old-site/bonici-frontend-1/src/app/components/navbar/navbar.scss
+
+
+.s-navbar {
+// ============================================
+// NAVBAR PRINCIPALE
+// ============================================
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.3s;
+
+  &.scrolled {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
+  }
+}
+
+// ============================================
+// CONTAINER
+// ============================================
+.nav-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+// ============================================
+// LOGO
+// ============================================
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  flex-shrink: 0;
+
+  img {
+    height: 50px;
+    width: auto;
+  }
+
+  .dot {
+    color: #C3102F;
+  }
+}
+
+// ============================================
+// NAV LINKS
+// ============================================
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 32px;
+  flex: 1;
+  justify-content: center;
+
+  > li {
+    position: relative;
+  }
+
+  a {
+    text-decoration: none;
+    color: #444;
+    font-size: 0.925rem;
+    font-weight: 500;
+    transition: color 0.2s;
+    position: relative;
+    padding-bottom: 4px;
+    cursor: pointer;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #C3102F;
+      transition: width 0.25s;
+    }
+
+    &:hover,
+    &.active {
+      color: #C3102F;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// ============================================
+// DROPDOWN
+// ============================================
+.dropdown {
+  position: relative;
+
+  .dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font: inherit;
+    color: #444;
+    padding: 0;
+    font-size: 0.925rem;
+    font-weight: 500;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #C3102F;
+      transition: width 0.25s;
+    }
+
+    svg {
+      transition: transform 0.3s;
+    }
+
+    &:hover,
+    &.active {
+      color: #C3102F;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
+  &:hover .dropdown-toggle svg {
+    transform: rotate(180deg);
+  }
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  min-width: 220px;
+  background: white;
+  border-radius: 12px;
+  padding: 8px 0;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+  z-index: 1000;
+  list-style: none;
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  li {
+    padding: 0;
+
+    a {
+      display: block;
+      padding: 10px 20px;
+      color: #333;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 400;
+      transition: all 0.2s;
+      white-space: nowrap;
+
+      &::after {
+        display: none; // Supprime la barre sous les sous-menus
+      }
+
+      &:hover {
+        background: #f5f5f5;
+        color: #C3102F;
+      }
+
+      &.active {
+        color: #C3102F;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+// ============================================
+// NAV ACTIONS (boutons)
+// ============================================
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-outline {
+  text-decoration: none;
+  color: #333;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 8px 18px;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  background: none;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    border-color: #C3102F;
+    color: #C3102F;
+  }
+}
+
+.btn-primary {
+  text-decoration: none;
+  background: #C3102F;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:hover {
+    background: #A00D27;
+  }
+}
+
+.btn-cart {
+  display: flex;
+  align-items: center;
+  color: #333;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 8px;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #C3102F;
+  }
+}
+
+// ============================================
+// BURGER MENU (mobile)
+// ============================================
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  margin-left: auto;
+
+  span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #333;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  .open {
+    &:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    &:nth-child(2) {
+      opacity: 0;
+    }
+    &:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+  }
+}
+
+// ============================================
+// MOBILE MENU
+// ============================================
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  padding: 16px 24px 20px;
+  gap: 4px;
+  background: white;
+  border-top: 1px solid #f0f0f0;
+  max-height: 80vh;
+  overflow-y: auto;
+
+  a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 0;
+    font-size: 1rem;
+    font-weight: 500;
+    border-bottom: 1px solid #f5f5f5;
+    cursor: pointer;
+
+    &:hover {
+      color: #C3102F;
+    }
+  }
+
+  .m-login {
+    color: #C3102F !important;
+  }
+
+  .m-register {
+    background: #C3102F;
+    color: white !important;
+    text-align: center;
+    border-radius: 8px;
+    padding: 12px !important;
+    margin-top: 8px;
+    border-bottom: none !important;
+
+    &:hover {
+      background: #A00D27;
+    }
+  }
+
+  .m-logout {
+    color: #C3102F !important;
+  }
+}
+
+// ============================================
+// MOBILE SUBMENU
+// ============================================
+.mobile-submenu {
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+
+  .mobile-submenu-title {
+    display: block;
+    padding: 8px 0;
+    font-weight: 700;
+    color: #1a1a1a;
+    font-size: 0.95rem;
+  }
+
+  a {
+    display: block;
+    padding: 8px 0 8px 20px;
+    color: #666;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 400;
+    border-bottom: none !important;
+
+    &:hover {
+      color: #C3102F;
+    }
+  }
+}
+
+// ============================================
+// RESPONSIVE
+// ============================================
+@media (max-width: 900px) {
+  .nav-links,
+  .nav-actions {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  .mobile-menu {
+    display: flex;
+  }
+}
+
+@media (min-width: 901px) {
+  .mobile-menu {
+    display: none !important;
+  }
+}
+
+// ============================================
+// AJUSTEMENTS PETITS ÉCRANS
+// ============================================
+@media (max-width: 480px) {
+  .nav-container {
+    padding: 0 16px;
+    height: 60px;
+    gap: 16px;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+
+    img {
+      height: 40px;
+    }
+  }
+
+  .btn-outline,
+  .btn-primary {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+
+  .mobile-menu {
+    padding: 12px 16px 16px;
+  }
+}
+}

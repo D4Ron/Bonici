@@ -1,0 +1,267 @@
+// Ported from Old-site/bonici-frontend-1/src/app/pages/menus/menus.scss
+$primary: #C3102F;
+$primary-dark: #A00D27;
+$gray: #f8f9fa;
+$border-radius: 16px;
+
+.s-menus {
+
+.menus-page { background: #f5f7fb; min-height: 100vh; }
+.menus-hero {
+  text-align: center; padding: 80px 20px 60px;
+  background: linear-gradient(135deg, $primary 0%, $primary-dark 100%);
+  color: white;
+  h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 16px; em { font-style: italic; font-weight: 600; } }
+  p { font-size: 1.1rem; opacity: 0.9; }
+  .search-box {
+    max-width: 500px; margin: 30px auto 0; display: flex; align-items: center;
+    background: white; border-radius: 60px; padding: 8px 20px; gap: 12px;
+    svg { flex-shrink: 0; }
+    input { flex: 1; border: none; padding: 12px 0; font-size: 1rem; outline: none; }
+    button { background: none; border: none; font-size: 1.2rem; cursor: pointer; color: #999; }
+  }
+}
+.menus-body { display: flex; gap: 40px; max-width: 1400px; margin: 0 auto; padding: 40px 20px; flex-wrap: wrap; }
+.filters {
+  flex: 0 0 280px; background: white; border-radius: $border-radius; padding: 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05); height: fit-content; position: sticky; top: 20px;
+  h3 { margin: 0 0 20px; font-size: 1.2rem; }
+  .filter-group { margin-bottom: 24px;
+    .filter-label { display: block; font-weight: 600; margin-bottom: 12px; }
+    .chips {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      .chip {
+        background: $gray; border: none; padding: 6px 14px; border-radius: 30px; cursor: pointer; font-size: 0.85rem;
+        &.active { background: $primary; color: white; }
+        &:hover:not(.active) { background: #e2e6ea; }
+      }
+    }
+    .range { width: 100%; margin: 10px 0; }
+    .range-labels { display: flex; justify-content: space-between; font-size: 0.8rem; color: #666; }
+    .select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 10px; background: white; }
+  }
+  .toggle-label { display: flex; align-items: center; gap: 12px; cursor: pointer; margin-top: 16px; }
+}
+.dishes-main { flex: 1; min-width: 0; }
+.toolbar {
+  display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;
+  background: white; padding: 12px 20px; border-radius: 40px; box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.view-btns button {
+  background: none; border: 1px solid #ddd; padding: 6px 12px; margin-left: 8px;
+  cursor: pointer; border-radius: 8px; font-weight: bold;
+  &.active { background: $primary; color: white; border-color: $primary; }
+}
+.dish-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px;
+}
+.dish-card {
+  background: white; border-radius: $border-radius; overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s;
+  &:hover { transform: translateY(-5px); box-shadow: 0 12px 28px rgba(0,0,0,0.12); }
+  &.unavailable { opacity: 0.7; }
+}
+.dish-img-wrap {
+  position: relative; height: 200px; background: #f0f0f0; overflow: hidden;
+  .dish-img { width: 100%; height: 100%;
+    img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+    &:hover img { transform: scale(1.03); }
+  }
+  .unavail-badge { position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.7); color: white; padding: 4px 10px; border-radius: 20px; font-size: 12px; backdrop-filter: blur(4px); }
+  .quick-add {
+    position: absolute; bottom: 12px; right: 12px; width: 36px; height: 36px;
+    border-radius: 50%; background: white; border: none; font-size: 20px; font-weight: bold;
+    color: $primary; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    &:hover:not(:disabled) { background: $primary; color: white; transform: scale(1.05); }
+    &:disabled { opacity: 0.5; cursor: not-allowed; }
+  }
+}
+.dish-body {
+  padding: 16px;
+  .dish-cat { font-size: 12px; text-transform: uppercase; color: $primary; font-weight: 600; margin-bottom: 6px; }
+  h4 { margin: 0 0 8px; font-size: 1.2rem; font-weight: 700; }
+  .dish-desc { color: #666; font-size: 0.85rem; line-height: 1.4; margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .dish-meta { display: flex; justify-content: space-between; font-size: 0.8rem; color: #888; margin-bottom: 12px; }
+  .dish-footer {
+    display: flex; justify-content: space-between; align-items: center; margin-top: 8px;
+    .dish-price { font-size: 1.2rem; font-weight: 800; color: $primary-dark; }
+    .btn-add {
+      background: $primary; color: white; border: none; padding: 8px 16px; border-radius: 30px; cursor: pointer; font-weight: 600;
+      &:hover:not(:disabled) { background: $primary-dark; }
+      &:disabled { background: #ccc; cursor: not-allowed; }
+    }
+  }
+}
+.dish-grid.list-view {
+  display: flex; flex-direction: column; gap: 16px;
+  .dish-card { display: flex; flex-direction: row;
+    .dish-img-wrap { width: 140px; height: 140px; flex-shrink: 0; }
+    .dish-body { flex: 1; }
+  }
+}
+.no-results { text-align: center; padding: 60px 20px; background: white; border-radius: $border-radius; grid-column: 1 / -1; }
+
+.dish-price {
+  .price-promo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .new-price {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #C3102F;
+  }
+  .old-price {
+    font-size: 0.9rem;
+    text-decoration: line-through;
+    color: #999;
+  }
+  .discount-badge {
+    background: #C3102F;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+  }
+  .price-normal {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+}
+
+/* ========== MENU DU JOUR - STYLES CORRIGÉS ========== */
+.daily-special-card {
+  background: linear-gradient(135deg, #fff8e7 0%, #fff0d4 100%);
+  border-radius: 24px;
+  padding: 20px;
+  margin-bottom: 32px;
+  border: 2px solid red;
+  box-shadow: 0 8px 20px rgba(255, 183, 3, 0.2);
+
+  .special-badge {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    
+    span:first-child {
+      background: red;
+      color: #2b2b2b;
+      padding: 4px 12px;
+      border-radius: 40px;
+      font-weight: bold;
+      font-size: 12px;
+    }
+    
+    .date {
+      color: #666;
+      font-size: 12px;
+    }
+  }
+
+  .special-content {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+
+    img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 16px;
+      flex-shrink: 0;
+    }
+
+    .special-info {
+      flex: 1;
+      
+      h2 {
+        font-size: 20px;
+        margin: 0 0 8px;
+        color: #2b2b2b;
+      }
+      
+      p {
+        font-size: 13px;
+        color: #666;
+        margin: 0 0 12px;
+      }
+      
+      .price-row {
+        margin: 8px 0;
+        
+        .special-price {
+          font-size: 20px;
+          font-weight: bold;
+          color: red;
+        }
+        
+        .old-price {
+          text-decoration: line-through;
+          color: #999;
+          font-size: 13px;
+          margin-right: 10px;
+        }
+        
+        .discount-badge {
+          background: #e85d04;
+          color: white;
+          padding: 2px 8px;
+          border-radius: 20px;
+          font-size: 11px;
+          margin-left: 10px;
+        }
+      }
+      
+      .btn-special {
+        background:red;
+        color: #2b2b2b;
+        border: none;
+        padding: 8px 20px;
+        border-radius: 40px;
+        font-weight: bold;
+        font-size: 13px;
+        cursor: pointer;
+        transition: all 0.3s;
+        
+        &:hover {
+          background: red;
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .menus-body { flex-direction: column; }
+  .filters { position: static; width: 100%; }
+  .dish-grid { grid-template-columns: 1fr; }
+  .menus-hero h1 { font-size: 1.8rem; }
+  
+  .daily-special-card {
+    .special-content {
+      flex-direction: column;
+      text-align: center;
+      
+      img {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 8px;
+      }
+    }
+    
+    .special-badge {
+      flex-direction: column;
+      gap: 8px;
+      text-align: center;
+    }
+  }
+}
+}

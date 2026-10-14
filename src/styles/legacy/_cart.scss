@@ -1,0 +1,103 @@
+// Ported from Old-site/bonici-frontend-1/src/app/pages/cart/cart.scss
+
+
+.s-cart {
+.cart-page {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding: 80px 20px 40px;
+}
+.cart-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  h1 { font-size: 28px; margin-bottom: 24px; color: #333; }
+}
+.item-image {
+  width: 80px; height: 80px; border-radius: 12px; overflow: hidden;
+  background: #C3102F; flex-shrink: 0;
+  img { width: 100%; height: 100%; object-fit: cover; }
+}
+.item-info {
+  display: flex; gap: 16px; align-items: center; width: 35%;
+  .item-details h3 { margin: 0; font-size: 16px; font-weight: 600; }
+}
+.cart-item {
+  display: flex; align-items: center; gap: 20px;
+  padding: 20px; background: white; border-radius: 16px;
+  margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.item-price, .item-total {
+  width: 15%; font-weight: 500; color: #C3102F;
+}
+.item-quantity {
+  width: 15%; display: flex; align-items: center; gap: 10px;
+  button {
+    width: 30px; height: 30px; border-radius: 8px;
+    border: 1px solid #ddd; background: white; cursor: pointer;
+    &:hover { background: #C3102F; color: white; border-color: #C3102F; }
+  }
+  span { min-width: 30px; text-align: center; }
+}
+.remove-btn {
+  background: none; border: none; font-size: 20px; cursor: pointer; opacity: 0.5;
+  &:hover { opacity: 1; color: #C3102F; }
+}
+.cart-summary {
+  background: white; border-radius: 16px; padding: 24px; margin-top: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  h3 { margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid #eee; }
+}
+.summary-row {
+  display: flex; justify-content: space-between; padding: 12px 0;
+  &.total { font-size: 18px; font-weight: 700; color: #C3102F; border-top: 1px solid #eee; margin-top: 12px; padding-top: 16px; }
+}
+.delivery-options {
+  margin: 20px 0;
+  .delivery-option {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px; border: 1px solid #ddd; border-radius: 12px; margin-bottom: 10px; cursor: pointer;
+    &:hover { border-color: #C3102F; background: #fef0f2; }
+  }
+}
+.address-input { margin: 20px 0; label { display: block; margin-bottom: 8px; font-weight: 500; } }
+.payment-methods { margin: 20px 0; label { display: block; margin-bottom: 8px; font-weight: 500; } }
+.form-control {
+  width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 12px; font-size: 14px;
+  &:focus { outline: none; border-color: #C3102F; }
+}
+.btn-order {
+  width: 100%; padding: 16px;
+  background: linear-gradient(135deg, #C3102F 0%, #A00D27 100%);
+  color: white; border: none; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer;
+  transition: opacity 0.3s;
+  &:hover:not(:disabled) { opacity: 0.9; }
+  &:disabled { opacity: 0.5; cursor: not-allowed; }
+}
+.empty-cart {
+  text-align: center; padding: 80px 20px; background: white; border-radius: 16px;
+  .empty-icon { font-size: 64px; margin-bottom: 20px; }
+  .btn-shop {
+    margin-top: 20px; padding: 12px 24px;
+    background: linear-gradient(135deg, #C3102F 0%, #A00D27 100%);
+    color: white; border: none; border-radius: 30px; cursor: pointer; text-decoration: none; display: inline-block;
+  }
+}
+.order-success {
+  text-align: center; padding: 60px; background: white; border-radius: 16px;
+  .success-icon { font-size: 64px; margin-bottom: 20px; }
+}
+.restaurant-selector {
+  background: #fff9f5; border-radius: 16px; padding: 1rem; margin: 1rem 0;
+  border: 1px solid #ffe0cc;
+  label { display: block; font-weight: 600; margin-bottom: 0.5rem; color: #C3102F; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; }
+  select {
+    width: 100%; padding: 0.8rem 1rem; border-radius: 40px; border: 1px solid #ffccaa;
+    background: white; font-size: 1rem; color: #2d2d2d; cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23C3102F' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+    background-repeat: no-repeat; background-position: right 1rem center; background-size: 16px;
+    &:focus { outline: none; border-color: #C3102F; box-shadow: 0 0 0 3px rgba(195,16,47,0.1); }
+    &:hover { border-color: #C3102F; }
+  }
+}
+}

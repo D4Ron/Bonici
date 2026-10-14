@@ -1,0 +1,162 @@
+// Ported from Old-site/bonici-frontend-1/src/app/pages/auth/register/register.scss
+
+
+.s-register {
+.auth-page {
+  min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
+  @media(max-width: 768px) { grid-template-columns: 1fr; }
+}
+
+.auth-visual {
+  // ===== NOUVEAU FOND PLUS CLAIR (comme exemple) =====
+  background: linear-gradient(145deg, #fff5eb, #fae8d1, #e8c9a7);
+  // ===================================================
+  display: flex; align-items: center; justify-content: center;
+  padding: 60px 48px; position: relative; overflow: hidden;
+  &::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(195,16,47,.08) 1px, transparent 0);
+    background-size: 40px 40px;
+  }
+  @media(max-width: 768px) { display: none; }
+}
+
+.visual-inner { 
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column;
+  align-items: center; // Centre tout horizontalement
+  text-align: center; // Centre le texte
+}
+
+.logo {
+  display: block;
+  margin-bottom: 16px;
+}
+
+.logo img {
+  height: 120px;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+  // Ombre légère pour faire ressortir le logo
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+}
+
+.auth-visual h2 {
+  font-family: 'Playfair Display', serif; 
+  font-size: 2rem;
+  font-weight: 800;
+  // ===== COULEUR POUR FOND CLAIR =====
+  color: #2d1a0f; // Marron foncé
+  // ==================================
+  line-height: 1.3;
+  margin: 0 0 12px 0;
+  
+  em { 
+    color: #C3102F; 
+    font-style: normal; 
+  }
+}
+
+// Style pour les "perks" (avantages) avec fond clair
+.perks { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 16px; 
+  margin-top: 20px;
+}
+
+.perk { 
+  display: flex; 
+  align-items: center; 
+  gap: 14px; 
+}
+
+.perk-icon { 
+  font-size: 1.4rem; 
+}
+
+.perk span:last-child { 
+  // ===== COULEUR POUR FOND CLAIR =====
+  color: #5a3d2b; // Marron moyen
+  font-size: .95rem; 
+}
+
+.auth-form {
+  display: flex; align-items: center; justify-content: center;
+  background: #f8f8f6; padding: 40px 24px; overflow-y: auto;
+}
+.auth-card { width: 100%; max-width: 460px; }
+.back-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  text-decoration: none; color: #888; font-size: .85rem; margin-bottom: 28px;
+  transition: color .2s; &:hover { color: #C3102F; }
+}
+h1 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 800; color: #1a1a1a; margin: 0 0 8px; }
+.sub { color: #888; margin: 0 0 24px; }
+.alert-error {
+  background: #fff0f0; border: 1px solid #ffcdd2; border-radius: 10px;
+  padding: 12px 16px; color: #c62828; font-size: .875rem; margin-bottom: 16px;
+}
+.alert-success {
+  background: #f0fff4; border: 1px solid #c3e6cb; border-radius: 10px;
+  padding: 12px 16px; color: #155724; font-size: .875rem; margin-bottom: 16px;
+}
+.form-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  @media(max-width: 480px) { grid-template-columns: 1fr; }
+}
+.form-group { margin-bottom: 18px; }
+.form-group label {
+  display: block; font-size: .85rem; font-weight: 600; color: #333; margin-bottom: 7px;
+}
+.input-wrap {
+  display: flex; align-items: center; gap: 10px; background: white;
+  border: 1.5px solid #e5e5e5; border-radius: 12px; padding: 11px 14px; transition: border-color .2s;
+  &:focus-within { border-color: #C3102F; box-shadow: 0 0 0 3px rgba(195,16,47,.08); }
+  input { flex: 1; border: none; outline: none; font-size: .9rem; color: #1a1a1a; background: transparent; &::placeholder { color: #ccc; } }
+}
+.eye-btn { background: none; border: none; cursor: pointer; font-size: .9rem; }
+.strength-wrap { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
+.strength-bar { flex: 1; height: 4px; background: #eee; border-radius: 2px; overflow: hidden; }
+.strength-fill { height: 100%; border-radius: 2px; transition: width .3s, background .3s; }
+.s1 { background: #ef4444; } .s2 { background: #f59e0b; }
+.s3 { background: #3b82f6; } .s4 { background: #22c55e; }
+.strength-lbl { font-size: .75rem; color: #888; white-space: nowrap; }
+.terms-label {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: .85rem; color: #666; margin-bottom: 20px; cursor: pointer; line-height: 1.4;
+  input { margin-top: 2px; accent-color: #C3102F; }
+  a { color: #C3102F; text-decoration: none; }
+}
+.btn-submit {
+  width: 100%; background: #C3102F; color: white; border: none; cursor: pointer;
+  border-radius: 12px; padding: 14px; font-size: 1rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 20px;
+  transition: background .2s;
+  &:hover:not(:disabled) { background: #A00D27; }
+  &:disabled { opacity: .6; cursor: not-allowed; }
+}
+.spinner {
+  width: 18px; height: 18px; border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.3); border-top-color: white;
+  animation: spin .7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.divider {
+  text-align: center; position: relative; margin: 20px 0; color: #ccc; font-size: .8rem;
+  &::before, &::after { content: ''; position: absolute; top: 50%; width: calc(50% - 30px); height: 1px; background: #e5e5e5; }
+  &::before { left: 0; } &::after { right: 0; }
+  span { background: #f8f8f6; padding: 0 12px; }
+}
+.btn-google {
+  width: 100%; background: white; color: #333; border: 1.5px solid #e5e5e5; border-radius: 12px;
+  padding: 12px; font-size: .95rem; font-weight: 600;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  cursor: pointer; margin-bottom: 20px; transition: all .2s;
+  &:hover { border-color: #aaa; box-shadow: 0 4px 12px rgba(0,0,0,.08); }
+}
+.switch { text-align: center; color: #888; font-size: .9rem; margin: 0;
+  a { color: #C3102F; text-decoration: none; font-weight: 600; }
+}
+}
