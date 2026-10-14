@@ -140,25 +140,20 @@ Si Odoo est indisponible, les commandes continuent de fonctionner ; les renvoyer
 
 ## 10. Sauvegardes
 
-À faire **au minimum chaque jour**, et avant chaque mise à jour.
+À faire **au minimum chaque jour**, et avant chaque mise à jour. Le script `scripts/backup.sh` exporte la base,
+archive les fichiers envoyés (photos, documents, CV) et supprime les sauvegardes de plus de 14 jours, dans `~/sauvegardes` :
 
 ```bash
-mkdir -p ~/sauvegardes
-# Base de données
-docker compose -f compose.yaml exec -T db pg_dump -U bonici bonici | gzip > ~/sauvegardes/bonici-$(date +%F).sql.gz
-# Fichiers envoyés (photos, documents, CV)
-docker run --rm -v bonici_uploads:/data -v ~/sauvegardes:/out alpine tar czf /out/uploads-$(date +%F).tar.gz -C /data .
+~/bonici/scripts/backup.sh
 ```
 
-Automatiser avec `crontab -e` (tous les jours à 3 h, conservation 14 jours) :
+L'automatiser chaque nuit à 3 h avec `crontab -e` (une seule ligne : cron n'accepte pas les commandes coupées) :
 
 ```cron
-0 3 * * * cd ~/bonici && docker compose -f compose.yaml exec -T db pg_dump -U bonici bonici | gzip > ~/sauvegardes/bonici-$(date +\%F).sql.gz && find ~/sauvegardes -mtime +14 -delete
+0 3 * * * $HOME/bonici/scripts/backup.sh >> $HOME/sauvegardes/backup.log 2>&1
 ```
 
-Copier régulièrement `~/sauvegardes` hors du serveur (autre machine, stockage cloud).
-
-> Le nom exact du volume dépend du dossier du projet (`<dossier>_uploads`) : le vérifier avec `docker volume ls`.
+Copier régulièrement `~/sauvegardes` hors du serveur.
 
 **Restaurer** la base :
 

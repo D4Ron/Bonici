@@ -34,7 +34,7 @@ Back-office : `/admin`. Un gÃ©rant de restaurant (crÃ©Ã© dans Admin â†�
 
 ## Production
 
-Guide complet (serveur, DNS, sauvegardes, mises à jour) : [DEPLOYMENT.md](DEPLOYMENT.md).
+Guide complet (serveur, DNS, sauvegardes, mises à jour) : [DEPLOYMENT.md](DEPLOYMENT.md) — version PDF à remettre : [docs/Bonici-Deploiement.pdf](docs/Bonici-Deploiement.pdf) (régénérée par `python docs/build-deployment-pdf.py`).
 
 
 ```bash
